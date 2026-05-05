@@ -14,88 +14,76 @@ font-family:Arial, sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-color:white;
 min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
 padding:20px;
 }
 
-.container{
-max-width:900px;
-width:100%;
-}
-
-header{
-text-align:center;
-margin-bottom:20px;
-}
-
-header h1{
-font-size:28px;
-}
-
+/* КАРТОЧКА */
 .card{
+width:100%;
+max-width:800px;
 background:rgba(255,255,255,0.08);
-padding:25px;
+backdrop-filter:blur(12px);
 border-radius:20px;
-backdrop-filter:blur(10px);
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
+padding:25px;
 text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,0.5);
 }
 
+/* АВАТАР */
 .avatar{
 width:140px;
 height:140px;
 border-radius:50%;
 margin:15px auto;
-border:3px solid white;
-object-fit:cover;
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
 }
 
-section{
-margin-top:20px;
-}
-
-.skills span{
-display:inline-block;
-margin:5px;
-padding:6px 10px;
-background:rgba(255,255,255,0.2);
-border-radius:8px;
-font-size:13px;
-}
-
+/* КНОПКА */
 button{
 margin-top:15px;
-padding:10px 15px;
+padding:12px 18px;
 border:none;
-border-radius:10px;
+border-radius:14px;
 cursor:pointer;
 font-weight:bold;
+color:white;
+background:linear-gradient(135deg,#ff6a00,#ee0979);
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 transition:0.3s;
 }
 
 button:hover{
-background:black;
-color:white;
+transform:scale(1.08);
+box-shadow:0 15px 35px rgba(0,0,0,0.5);
 }
 
+/* СОЦСЕТИ */
 .social a{
 display:inline-block;
-margin:5px;
-padding:8px 12px;
-background:white;
-color:black;
-border-radius:8px;
+margin:8px;
+padding:12px 16px;
+border-radius:14px;
 text-decoration:none;
+font-weight:bold;
+color:white;
+background:linear-gradient(135deg,#141e30,#243b55);
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
 transition:0.3s;
 }
 
 .social a:hover{
-transform:scale(1.05);
+transform:translateY(-4px) scale(1.05);
+background:linear-gradient(135deg,#00c6ff,#0072ff);
 }
 
 /* МОДАЛКА */
@@ -117,7 +105,7 @@ color:black;
 padding:20px;
 border-radius:15px;
 width:90%;
-max-width:300px;
+max-width:320px;
 text-align:center;
 }
 
@@ -129,73 +117,59 @@ border-radius:8px;
 border:1px solid #ccc;
 }
 
-/* ТОСТ УВЕДОМЛЕНИЕ */
+/* TOAST */
 .toast{
 position:fixed;
-bottom:20px;
+top:50%;
 left:50%;
-transform:translateX(-50%);
-background:#1f2937;
+transform:translate(-50%,-50%) scale(0.8);
+background:linear-gradient(135deg,#00c6ff,#0072ff);
 color:white;
-padding:12px 20px;
-border-radius:10px;
+padding:20px 30px;
+border-radius:16px;
+font-size:18px;
+font-weight:bold;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
 opacity:0;
-pointer-events:none;
-transition:0.5s;
+transition:0.4s;
+text-align:center;
+min-width:260px;
 }
 
 .toast.show{
 opacity:1;
-transform:translateX(-50%) translateY(-10px);
+transform:translate(-50%,-50%) scale(1);
 }
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
-
-<header>
-<h1>👨‍💻 Портфолио разработчика</h1>
-</header>
-
 <div class="card">
 
-<h2>Елисей Персань</h2>
+<h1>Елисей Персань</h1>
 <p>24ИСИП | БИК | Белгород</p>
 
-<img src="https://via.placeholder.com/140" class="avatar">
+<div class="avatar">PHOTO</div>
 
-<section>
-<h2>Обо мне</h2>
-<p>Я студент и изучаю веб-разработку (HTML, CSS, JS).</p>
-</section>
-
-<section>
-<h2>Навыки</h2>
-<div class="skills">
-<span>HTML</span>
-<span>CSS</span>
-<span>JavaScript</span>
-</div>
-</section>
+<p>Я студент, изучаю HTML, CSS и начинаю JavaScript</p>
 
 <button onclick="openModal()">Регистрация</button>
 
-<section class="social">
-<h2>Контакты</h2>
+<div class="social">
+<h3>Контакты</h3>
 <a href="https://t.me/Ssygckh" target="_blank">Telegram</a>
 <a href="https://vk.com/id647354987" target="_blank">VK</a>
-</section>
-
 </div>
+
 </div>
 
 <!-- МОДАЛКА -->
 <div id="modal" class="modal">
 <div class="modal-box">
 
-<h2>Регистрация</h2>
+<h3>Регистрация</h3>
 
 <input type="text" placeholder="Имя">
 <input type="email" placeholder="Email">
@@ -206,8 +180,8 @@ transform:translateX(-50%) translateY(-10px);
 </div>
 </div>
 
-<!-- ТОСТ -->
-<div id="toast" class="toast">Спасибо за регистрацию! 🎉</div>
+<!-- TOAST -->
+<div id="toast" class="toast">🎉 Регистрация успешно завершена</div>
 
 <script>
 function openModal(){
@@ -221,7 +195,7 @@ document.getElementById("modal").style.display="none";
 function register(){
 closeModal();
 
-let toast = document.getElementById("toast");
+let toast=document.getElementById("toast");
 toast.classList.add("show");
 
 setTimeout(()=>{
