@@ -2,32 +2,149 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Визитка студента</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Портфолио студента</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.card{
+display:flex;
+gap:40px;
+padding:30px;
+background:rgba(255,255,255,0.08);
+border-radius:20px;
+backdrop-filter:blur(10px);
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.left{
+max-width:300px;
+}
+
+button{
+padding:10px 15px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+margin-top:10px;
+}
+
+button:hover{
+background:black;
+color:white;
+}
+
+.social a{
+display:inline-block;
+margin:5px;
+padding:8px 12px;
+background:white;
+color:black;
+text-decoration:none;
+border-radius:8px;
+}
+
+.avatar{
+width:200px;
+height:200px;
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:20px;
+font-weight:bold;
+}
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+}
+
+.modal-box{
+background:white;
+color:black;
+padding:20px;
+border-radius:15px;
+width:250px;
+text-align:center;
+}
+
+input{
+width:90%;
+padding:8px;
+margin:6px 0;
+}
+</style>
 </head>
 
-<body style="margin:0;font-family:Arial;background:linear-gradient(135deg,#6a11cb,#2575fc);color:white;display:flex;justify-content:center;align-items:center;height:100vh;">
+<body>
 
-<div style="background:rgba(255,255,255,0.15);padding:25px;border-radius:20px;text-align:center;width:300px;">
+<div class="card">
 
-<h2>Елисей Персань</h2>
+<div class="left">
+<h1>Елисей Персань</h1>
 <p>24ИСИП | БИК | Белгород</p>
 
-<div style="width:120px;height:120px;background:white;color:black;margin:10px auto;border-radius:50%;display:flex;align-items:center;justify-content:center;">
-Фото
+<p>Студент веб-разработчик. HTML / CSS</p>
+
+<button onclick="openModal()">Регистрация</button>
+
+<div class="social">
+<a href="https://t.me/">Telegram</a>
+<a href="https://vk.com">VK</a>
+</div>
 </div>
 
-<p>Я студент и изучаю HTML и CSS</p>
-
-<button onclick="alert('Спасибо за регистрацию!')" style="padding:10px 15px;border:none;border-radius:10px;cursor:pointer;">
-Регистрация
-</button>
-
-<div style="margin-top:10px;">
-<a href="https://t.me/" style="color:white;display:block;">Telegram</a>
-<a href="https://vk.com" style="color:white;display:block;">VK</a>
-</div>
+<div class="avatar">PROFILE</div>
 
 </div>
+
+<div id="modal" class="modal">
+<div class="modal-box">
+
+<h2>Регистрация</h2>
+
+<input type="text" placeholder="Имя">
+<input type="email" placeholder="Email">
+
+<button onclick="register()">Отправить</button>
+<button onclick="closeModal()">Закрыть</button>
+
+</div>
+</div>
+
+<script>
+function openModal(){
+document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+function register(){
+alert("Спасибо за регистрацию!");
+closeModal();
+}
+</script>
 
 </body>
 </html>
