@@ -21,11 +21,6 @@ color:white;
 transition:0.3s;
 }
 
-body.light{
-background:#f5f7fa;
-color:#111;
-}
-
 /* МЕНЮ */
 nav{
 position:fixed;
@@ -46,22 +41,6 @@ color:white;
 text-decoration:none;
 margin:0 10px;
 font-weight:bold;
-cursor:pointer;
-}
-
-body.light nav{
-background:white;
-}
-
-body.light nav a{
-color:black;
-}
-
-/* КНОПКА ТЕМЫ */
-.toggle{
-padding:6px 10px;
-border:none;
-border-radius:8px;
 cursor:pointer;
 }
 
@@ -110,6 +89,8 @@ height:140px;
 border-radius:50%;
 margin:15px auto;
 border:3px solid white;
+object-fit:cover;
+display:block;
 }
 
 /* НАВЫКИ */
@@ -183,8 +164,6 @@ transform:translate(-50%,-50%) scale(1);
 <a href="#projects" onclick="highlight('projects')">Проекты</a>
 <a href="#contact" onclick="highlight('contact')">Контакты</a>
 </div>
-
-<button class="toggle" onclick="toggleTheme()">🌙</button>
 </nav>
 
 <div class="container">
@@ -194,15 +173,16 @@ transform:translate(-50%,-50%) scale(1);
 <h1>Елисей Персань</h1>
 <p>24ИСИП | БИК | Белгород</p>
 
-<img src="img/photo.jpg" class="avatar">
+<!-- ФОТО -->
+<img src="photo.jpg" class="avatar">
 
-<!-- ABOUT -->
+<!-- ОБО МНЕ -->
 <section id="about">
 <h2>Обо мне</h2>
 <p>Я студент и изучаю веб-разработку. Хочу стать frontend-разработчиком.</p>
 </section>
 
-<!-- SKILLS -->
+<!-- НАВЫКИ -->
 <section id="skills">
 <h2>Навыки</h2>
 <div class="skills">
@@ -213,7 +193,7 @@ transform:translate(-50%,-50%) scale(1);
 </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- ПРОЕКТЫ -->
 <section id="projects">
 <h2>Проекты</h2>
 <p>✔ Сайт-визитка</p>
@@ -222,7 +202,7 @@ transform:translate(-50%,-50%) scale(1);
 
 <button onclick="register()">Регистрация</button>
 
-<!-- CONTACT -->
+<!-- КОНТАКТЫ -->
 <section id="contact" class="social">
 <h2>Контакты</h2>
 <a href="https://t.me/Ssygckh" target="_blank">Telegram</a>
@@ -233,7 +213,7 @@ transform:translate(-50%,-50%) scale(1);
 </div>
 
 <!-- POPUP -->
-<div id="popup" class="popup">🎉 Регистрация успешна!</div>
+<div id="popup" class="popup">🎉 Спасибо за регистрацию!</div>
 
 <script>
 function register(){
@@ -243,10 +223,6 @@ p.classList.add("show");
 setTimeout(()=>{
 p.classList.remove("show");
 },2500);
-}
-
-function toggleTheme(){
-document.body.classList.toggle("light");
 }
 
 function highlight(id){
