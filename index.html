@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Портфолио студента</title>
+<title>Портфолио | Елисей</title>
 
 <style>
 *{
@@ -11,70 +11,112 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:Arial;
+scroll-behavior:smooth;
 }
 
+/* ТЕМА */
 body{
 background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 color:white;
+transition:0.3s;
+}
+
+body.light{
+background:#f5f7fa;
+color:#111;
+}
+
+/* МЕНЮ */
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 10px;
+font-weight:bold;
+}
+
+body.light nav{
+background:white;
+}
+
+body.light nav a{
+color:black;
+}
+
+/* КНОПКА ТЕМЫ */
+.toggle{
+padding:6px 10px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* КАРТОЧКА */
+.container{
+padding-top:80px;
 display:flex;
 justify-content:center;
-padding:20px;
-min-height:100vh;
 }
 
 .card{
 width:100%;
 max-width:700px;
 background:rgba(255,255,255,0.08);
-backdrop-filter:blur(12px);
-border-radius:20px;
 padding:25px;
+border-radius:20px;
 text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,0.5);
-animation:fade 0.8s ease;
+backdrop-filter:blur(10px);
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
 }
 
-@keyframes fade{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
+body.light .card{
+background:white;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
+/* СЕКЦИИ */
+section{
+margin-top:30px;
+text-align:left;
+}
+
+h2{
+color:#00c6ff;
+margin-bottom:10px;
+}
+
+/* АВАТАР */
 .avatar{
 width:140px;
 height:140px;
 border-radius:50%;
 margin:15px auto;
 border:3px solid white;
-object-fit:cover;
 }
 
-h1{
-margin-top:10px;
-}
-
-section{
-margin-top:20px;
-text-align:left;
-}
-
-h2{
-margin-bottom:8px;
-color:#00c6ff;
-}
-
+/* НАВЫКИ */
 .skills span{
 display:inline-block;
 margin:5px;
 padding:6px 10px;
 background:rgba(255,255,255,0.15);
 border-radius:8px;
-font-size:13px;
 }
 
-.projects p{
-margin:6px 0;
-}
-
+/* КНОПКА */
 button{
 padding:12px 18px;
 border:none;
@@ -91,6 +133,7 @@ button:hover{
 transform:scale(1.05);
 }
 
+/* СОЦСЕТИ */
 .social a{
 display:inline-block;
 margin:6px;
@@ -100,17 +143,46 @@ color:black;
 border-radius:10px;
 text-decoration:none;
 font-weight:bold;
-transition:0.3s;
 }
 
-.social a:hover{
-background:#00c6ff;
+/* POPUP */
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0.8);
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+padding:20px 30px;
+border-radius:15px;
 color:white;
+font-weight:bold;
+opacity:0;
+transition:0.3s;
+text-align:center;
+}
+
+.popup.show{
+opacity:1;
+transform:translate(-50%,-50%) scale(1);
 }
 </style>
 </head>
 
 <body>
+
+<!-- МЕНЮ -->
+<nav>
+<div>
+<a href="#about">Обо мне</a>
+<a href="#skills">Навыки</a>
+<a href="#projects">Проекты</a>
+<a href="#contact">Контакты</a>
+</div>
+
+<button class="toggle" onclick="toggleTheme()">🌙</button>
+</nav>
+
+<div class="container">
 
 <div class="card">
 
@@ -119,45 +191,57 @@ color:white;
 
 <img src="img/photo.jpg" class="avatar">
 
-<!-- ОБО МНЕ -->
-<section>
+<!-- ABOUT -->
+<section id="about">
 <h2>Обо мне</h2>
-<p>Я студент и изучаю веб-разработку. Осваиваю HTML, CSS и JavaScript. Цель — стать frontend-разработчиком.</p>
+<p>Я студент и изучаю веб-разработку. Хочу стать frontend-разработчиком.</p>
 </section>
 
-<!-- НАВЫКИ -->
-<section>
+<!-- SKILLS -->
+<section id="skills">
 <h2>Навыки</h2>
 <div class="skills">
 <span>HTML</span>
 <span>CSS</span>
-<span>JavaScript (нач.)</span>
+<span>JavaScript</span>
 <span>GitHub</span>
 </div>
 </section>
 
-<!-- ПРОЕКТЫ -->
-<section class="projects">
+<!-- PROJECTS -->
+<section id="projects">
 <h2>Проекты</h2>
-<p>✔ Сайт-визитка (этот проект)</p>
-<p>✔ Учебные работы по HTML/CSS</p>
+<p>✔ Сайт-визитка</p>
+<p>✔ Учебные работы</p>
 </section>
 
-<!-- КНОПКА -->
 <button onclick="register()">Регистрация</button>
 
-<!-- КОНТАКТЫ -->
-<section class="social">
+<!-- CONTACT -->
+<section id="contact" class="social">
 <h2>Контакты</h2>
 <a href="https://t.me/Ssygckh" target="_blank">Telegram</a>
 <a href="https://vk.com/id647354987" target="_blank">VK</a>
 </section>
 
 </div>
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">🎉 Регистрация успешна!</div>
 
 <script>
 function register(){
-alert("🎉 Спасибо за регистрацию!");
+let p=document.getElementById("popup");
+p.classList.add("show");
+
+setTimeout(()=>{
+p.classList.remove("show");
+},3000);
+}
+
+function toggleTheme(){
+document.body.classList.toggle("light");
 }
 </script>
 
