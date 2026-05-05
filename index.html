@@ -31,7 +31,6 @@ margin:auto;
 padding:20px;
 }
 
-/* ШАПКА */
 header{
 text-align:center;
 margin-bottom:30px;
@@ -41,7 +40,6 @@ header h1{
 font-size:28px;
 }
 
-/* КАРТОЧКА */
 .card{
 background:rgba(255,255,255,0.08);
 padding:20px;
@@ -52,18 +50,14 @@ text-align:center;
 }
 
 .avatar{
-width:140px;
-height:140px;
+width:150px;
+height:150px;
 margin:15px auto;
 border-radius:50%;
-background:linear-gradient(135deg,#00c6ff,#0072ff);
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
+object-fit:cover;
+border:3px solid white;
 }
 
-/* СЕКЦИИ */
 section{
 margin-top:20px;
 }
@@ -72,7 +66,6 @@ section h2{
 margin-bottom:10px;
 }
 
-/* НАВЫКИ */
 .skills span{
 display:inline-block;
 margin:5px;
@@ -82,7 +75,6 @@ border-radius:8px;
 font-size:13px;
 }
 
-/* КНОПКИ */
 button{
 margin-top:15px;
 padding:10px 15px;
@@ -98,7 +90,6 @@ background:black;
 color:white;
 }
 
-/* СОЦ СЕТИ */
 .social a{
 display:inline-block;
 margin:5px;
@@ -114,7 +105,10 @@ transition:0.3s;
 transform:scale(1.05);
 }
 
-/* МОДАЛКА */
+.projects p{
+margin:5px 0;
+}
+
 .modal{
 display:none;
 position:fixed;
@@ -144,6 +138,12 @@ margin:6px 0;
 border-radius:8px;
 border:1px solid #ccc;
 }
+
+footer{
+text-align:center;
+margin-top:20px;
+opacity:0.7;
+}
 </style>
 </head>
 
@@ -160,11 +160,11 @@ border:1px solid #ccc;
 <h2>Елисей Персань</h2>
 <p>24ИСИП | БИК | Белгород</p>
 
-<div class="avatar">PHOTO</div>
+<img src="https://via.placeholder.com/150" class="avatar">
 
 <section>
 <h2>Обо мне</h2>
-<p>Я студент и изучаю веб-разработку. Работаю с HTML, CSS и JavaScript.</p>
+<p>Я студент и изучаю веб-разработку. Работаю с HTML, CSS и начинаю изучать JavaScript.</p>
 </section>
 
 <section>
@@ -176,19 +176,28 @@ border:1px solid #ccc;
 </div>
 </section>
 
+<section class="projects">
+<h2>Мои проекты</h2>
+<p>✔ Сайт-визитка (этот проект)</p>
+<p>✔ Учебные проекты по HTML/CSS</p>
+</section>
+
 <button onclick="openModal()">Регистрация</button>
 
 <section class="social">
 <h2>Контакты</h2>
-<a href="https://t.me/">Telegram</a>
-<a href="https://vk.com/">VK</a>
+<a href="https://t.me/Ssygckh" target="_blank">Telegram</a>
+<a href="https://vk.com/id647354987" target="_blank">VK</a>
 </section>
 
 </div>
 
+<footer>
+<p>© 2026 Елисей Персань</p>
+</footer>
+
 </div>
 
-<!-- МОДАЛЬНОЕ ОКНО -->
 <div id="modal" class="modal">
 <div class="modal-box">
 
