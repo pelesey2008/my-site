@@ -17,23 +17,20 @@ body{
 background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 color:white;
 min-height:100vh;
-animation:fade 1s ease-in;
-}
-
-@keyframes fade{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
 }
 
 .container{
 max-width:900px;
-margin:auto;
-padding:20px;
+width:100%;
 }
 
 header{
 text-align:center;
-margin-bottom:30px;
+margin-bottom:20px;
 }
 
 header h1{
@@ -42,7 +39,7 @@ font-size:28px;
 
 .card{
 background:rgba(255,255,255,0.08);
-padding:20px;
+padding:25px;
 border-radius:20px;
 backdrop-filter:blur(10px);
 box-shadow:0 10px 30px rgba(0,0,0,0.5);
@@ -50,20 +47,16 @@ text-align:center;
 }
 
 .avatar{
-width:150px;
-height:150px;
-margin:15px auto;
+width:140px;
+height:140px;
 border-radius:50%;
-object-fit:cover;
+margin:15px auto;
 border:3px solid white;
+object-fit:cover;
 }
 
 section{
 margin-top:20px;
-}
-
-section h2{
-margin-bottom:10px;
 }
 
 .skills span{
@@ -105,10 +98,7 @@ transition:0.3s;
 transform:scale(1.05);
 }
 
-.projects p{
-margin:5px 0;
-}
-
+/* МОДАЛКА */
 .modal{
 display:none;
 position:fixed;
@@ -139,10 +129,24 @@ border-radius:8px;
 border:1px solid #ccc;
 }
 
-footer{
-text-align:center;
-margin-top:20px;
-opacity:0.7;
+/* ТОСТ УВЕДОМЛЕНИЕ */
+.toast{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#1f2937;
+color:white;
+padding:12px 20px;
+border-radius:10px;
+opacity:0;
+pointer-events:none;
+transition:0.5s;
+}
+
+.toast.show{
+opacity:1;
+transform:translateX(-50%) translateY(-10px);
 }
 </style>
 </head>
@@ -160,11 +164,11 @@ opacity:0.7;
 <h2>Елисей Персань</h2>
 <p>24ИСИП | БИК | Белгород</p>
 
-<img src="https://via.placeholder.com/150" class="avatar">
+<img src="https://via.placeholder.com/140" class="avatar">
 
 <section>
 <h2>Обо мне</h2>
-<p>Я студент и изучаю веб-разработку. Работаю с HTML, CSS и начинаю изучать JavaScript.</p>
+<p>Я студент и изучаю веб-разработку (HTML, CSS, JS).</p>
 </section>
 
 <section>
@@ -176,12 +180,6 @@ opacity:0.7;
 </div>
 </section>
 
-<section class="projects">
-<h2>Мои проекты</h2>
-<p>✔ Сайт-визитка (этот проект)</p>
-<p>✔ Учебные проекты по HTML/CSS</p>
-</section>
-
 <button onclick="openModal()">Регистрация</button>
 
 <section class="social">
@@ -191,13 +189,9 @@ opacity:0.7;
 </section>
 
 </div>
-
-<footer>
-<p>© 2026 Елисей Персань</p>
-</footer>
-
 </div>
 
+<!-- МОДАЛКА -->
 <div id="modal" class="modal">
 <div class="modal-box">
 
@@ -212,6 +206,9 @@ opacity:0.7;
 </div>
 </div>
 
+<!-- ТОСТ -->
+<div id="toast" class="toast">Спасибо за регистрацию! 🎉</div>
+
 <script>
 function openModal(){
 document.getElementById("modal").style.display="flex";
@@ -222,8 +219,14 @@ document.getElementById("modal").style.display="none";
 }
 
 function register(){
-alert("Спасибо за регистрацию!");
 closeModal();
+
+let toast = document.getElementById("toast");
+toast.classList.add("show");
+
+setTimeout(()=>{
+toast.classList.remove("show");
+},3000);
 }
 </script>
 
