@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Портфолио | Елисей</title>
+<title>Портфолио студента</title>
 
 <style>
 *{
@@ -46,6 +46,7 @@ color:white;
 text-decoration:none;
 margin:0 10px;
 font-weight:bold;
+cursor:pointer;
 }
 
 body.light nav{
@@ -82,15 +83,19 @@ backdrop-filter:blur(10px);
 box-shadow:0 15px 40px rgba(0,0,0,0.4);
 }
 
-body.light .card{
-background:white;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-}
-
 /* СЕКЦИИ */
 section{
 margin-top:30px;
 text-align:left;
+padding:10px;
+border-radius:12px;
+transition:0.4s;
+}
+
+section.active{
+background:rgba(0,198,255,0.15);
+box-shadow:0 0 15px rgba(0,198,255,0.4);
+transform:scale(1.02);
 }
 
 h2{
@@ -173,10 +178,10 @@ transform:translate(-50%,-50%) scale(1);
 <!-- МЕНЮ -->
 <nav>
 <div>
-<a href="#about">Обо мне</a>
-<a href="#skills">Навыки</a>
-<a href="#projects">Проекты</a>
-<a href="#contact">Контакты</a>
+<a href="#about" onclick="highlight('about')">Обо мне</a>
+<a href="#skills" onclick="highlight('skills')">Навыки</a>
+<a href="#projects" onclick="highlight('projects')">Проекты</a>
+<a href="#contact" onclick="highlight('contact')">Контакты</a>
 </div>
 
 <button class="toggle" onclick="toggleTheme()">🌙</button>
@@ -237,11 +242,21 @@ p.classList.add("show");
 
 setTimeout(()=>{
 p.classList.remove("show");
-},3000);
+},2500);
 }
 
 function toggleTheme(){
 document.body.classList.toggle("light");
+}
+
+function highlight(id){
+let el=document.getElementById(id);
+
+el.classList.add("active");
+
+setTimeout(()=>{
+el.classList.remove("active");
+},1200);
 }
 </script>
 
