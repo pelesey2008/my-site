@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Портфолио | Елисей</title>
+<title>Портфолио студента</title>
 
 <style>
 *{
@@ -33,6 +33,12 @@ border-radius:20px;
 padding:25px;
 text-align:center;
 box-shadow:0 15px 40px rgba(0,0,0,0.5);
+animation:fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 /* АВАТАР */
@@ -41,14 +47,17 @@ width:140px;
 height:140px;
 border-radius:50%;
 margin:15px auto;
-background:linear-gradient(135deg,#00c6ff,#0072ff);
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
+object-fit:cover;
+border:3px solid rgba(255,255,255,0.7);
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+transition:0.3s;
 }
 
-/* КНОПКА */
+.avatar:hover{
+transform:scale(1.05);
+}
+
+/* КНОПКИ */
 button{
 margin-top:15px;
 padding:12px 18px;
@@ -64,7 +73,6 @@ transition:0.3s;
 
 button:hover{
 transform:scale(1.08);
-box-shadow:0 15px 35px rgba(0,0,0,0.5);
 }
 
 /* СОЦСЕТИ */
@@ -117,7 +125,7 @@ border-radius:8px;
 border:1px solid #ccc;
 }
 
-/* TOAST */
+/* УВЕДОМЛЕНИЕ */
 .toast{
 position:fixed;
 top:50%;
@@ -151,12 +159,15 @@ transform:translate(-50%,-50%) scale(1);
 <h1>Елисей Персань</h1>
 <p>24ИСИП | БИК | Белгород</p>
 
-<div class="avatar">PHOTO</div>
+<!-- АВАТАР -->
+<img src="Screenshot_20260505_223912.jpg" class="avatar">
 
-<p>Я студент, изучаю HTML, CSS и начинаю JavaScript</p>
+<p>Я студент, изучаю веб-разработку (HTML, CSS, JS)</p>
 
+<!-- КНОПКА -->
 <button onclick="openModal()">Регистрация</button>
 
+<!-- СОЦСЕТИ -->
 <div class="social">
 <h3>Контакты</h3>
 <a href="https://t.me/Ssygckh" target="_blank">Telegram</a>
@@ -180,7 +191,7 @@ transform:translate(-50%,-50%) scale(1);
 </div>
 </div>
 
-<!-- TOAST -->
+<!-- УВЕДОМЛЕНИЕ -->
 <div id="toast" class="toast">🎉 Регистрация успешно завершена</div>
 
 <script>
