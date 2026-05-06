@@ -45,7 +45,7 @@ margin:auto;
 padding:100px 20px 40px;
 }
 
-/* ГЛАВНЫЙ БЛОК */
+/* HERO */
 .hero{
 display:flex;
 flex-wrap:wrap;
@@ -61,17 +61,11 @@ border-radius:20px;
 object-fit:cover;
 }
 
-/* ТЕКСТ */
 .info{
 flex:1;
 min-width:250px;
 }
 
-.info h1{
-margin-bottom:10px;
-}
-
-/* СЕКЦИИ */
 .section{
 margin-top:25px;
 padding:20px;
@@ -79,7 +73,6 @@ background:rgba(255,255,255,0.08);
 border-radius:15px;
 }
 
-/* НАВЫКИ */
 .skills span{
 display:inline-block;
 margin:5px;
@@ -91,23 +84,83 @@ border-radius:8px;
 /* КНОПКИ */
 button{
 margin-top:10px;
-padding:10px 15px;
+padding:12px 18px;
 border:none;
-border-radius:10px;
+border-radius:12px;
 cursor:pointer;
-background:#ff6a00;
+background:linear-gradient(135deg,#ff6a00,#ee0979);
 color:white;
+font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
 }
 
 /* СОЦСЕТИ */
 .social a{
 display:inline-block;
 margin:5px;
-padding:8px 12px;
+padding:10px 14px;
 background:white;
 color:black;
-border-radius:8px;
+border-radius:10px;
 text-decoration:none;
+}
+
+/* POPUP */
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+pointer-events:none;
+transition:0.3s;
+}
+
+.popup.active{
+opacity:1;
+pointer-events:auto;
+}
+
+.popup-box{
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+padding:30px;
+border-radius:20px;
+text-align:center;
+color:white;
+width:90%;
+max-width:320px;
+animation:pop 0.4s ease;
+box-shadow:0 10px 40px rgba(0,0,0,0.5);
+}
+
+.popup-box h2{
+margin-bottom:10px;
+}
+
+.popup-box button{
+background:white;
+color:black;
+margin-top:15px;
+}
+
+@keyframes pop{
+from{
+transform:scale(0.7);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
 }
 
 /* АДАПТИВ */
@@ -122,7 +175,6 @@ text-align:center;
 
 <body>
 
-<!-- МЕНЮ -->
 <nav>
 <a href="#about">Обо мне</a>
 <a href="#skills">Навыки</a>
@@ -132,7 +184,6 @@ text-align:center;
 
 <div class="container">
 
-<!-- ГЛАВНЫЙ БЛОК -->
 <div class="hero">
 <img src="photo.jpg" class="avatar">
 
@@ -141,17 +192,15 @@ text-align:center;
 <p>24ИСИП | БИК | Белгород</p>
 <p>Начинающий frontend-разработчик</p>
 
-<button onclick="alert('Спасибо за регистрацию!')">Регистрация</button>
+<button onclick="openPopup()">Регистрация</button>
 </div>
 </div>
 
-<!-- ОБО МНЕ -->
 <div id="about" class="section">
 <h2>Обо мне</h2>
-<p>Я студент и изучаю веб-разработку. Осваиваю HTML, CSS и JavaScript.</p>
+<p>Я студент и изучаю веб-разработку.</p>
 </div>
 
-<!-- НАВЫКИ -->
 <div id="skills" class="section skills">
 <h2>Навыки</h2>
 <span>HTML</span>
@@ -160,14 +209,12 @@ text-align:center;
 <span>GitHub</span>
 </div>
 
-<!-- ПРОЕКТЫ -->
 <div id="projects" class="section">
 <h2>Проекты</h2>
 <p>✔ Сайт-визитка</p>
 <p>✔ Учебные проекты</p>
 </div>
 
-<!-- КОНТАКТЫ -->
 <div id="contact" class="section social">
 <h2>Контакты</h2>
 <a href="https://t.me/Ssygckh">Telegram</a>
@@ -175,6 +222,30 @@ text-align:center;
 </div>
 
 </div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+<div class="popup-box">
+<h2>🎉 Успешно!</h2>
+<p>Спасибо за регистрацию!</p>
+<button onclick="closePopup()">Закрыть</button>
+</div>
+</div>
+
+<script>
+function openPopup(){
+let p=document.getElementById("popup");
+p.classList.add("active");
+
+setTimeout(()=>{
+p.classList.remove("active");
+},2500);
+}
+
+function closePopup(){
+document.getElementById("popup").classList.remove("active");
+}
+</script>
 
 </body>
 </html>
